@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+body{
+    margin: 0;
+    background-color: #F3F5FC;
+}
+
+.logo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 40px;
+
+    position: absolute;
+    width: 120px;
+    height: 48px;
+    left: 3%;
+    top: 6%;
+
+}
+
+.alura{
+    position: absolute;
+    left: 36.67%;
+    right: 37.43%;
+}
+
+.textoEntrada{
+    background: none;
+    border: none;
+    color: #0A3871;
+    position: absolute;
+    width: 46%;
+    height: 50%;
+    left: 16%;
+    top: 24%;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 150%;
+
+    resize: none;
+}
+
+.textoEntrada:focus{
+    outline: none !important;
+}
+
+.bloque{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: absolute;
+    width: 25%;
+    height: 90%;
+    right: 2%;
+    top: 5%;
+    bottom: 5%;
+    background: #FFFFFF;
+    box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+    border-radius: 32px;
+}
+
+.textoFinal{
+    display: none;
+    width: 80%;
+    height: 80%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 150%;
+    color: #495057;
+}
+
+.btn-copiar{
+    display: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 15px;
+    font-weight: bold;
+    box-sizing: border-box;
+    width: 85%;
+    height: 9%;
+    border: 2px solid #0A3871;
+    background: none;
+    color: #0A3871;
+    border-radius: 24px;
+    transition: background 0.3s;
+}
+
+.btn-copiar:hover{
+    cursor: pointer;
+    background-color: #E9ECF8;
+    transition: background 0.3s;
+}
+
+.muñeco{
+    display: block;
+    margin-top: 30%;
+    text-align: center;
+    width: 80%;
+}
+
+.textosIniciales{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    width: 336px;
+}
+
+.mensajeNoEncontrado{
+    margin: 5% 0 0 0;
+    width: 336px;
+    height: 58px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    text-align: center;
+    color: #343A40;
+}
+
+.sugerencia{
+    margin: 0;
+    width: 336px;
+    height: 48px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    text-align: center;
+    color: #495057;
+
+}
+
+.reglas{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 46%;
+    height: 18px;
+    left: 16%;
+    top: 80%;
+}
+
+.reglas>p{
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 150%;
+    color: #495057;
+    opacity: 0.8;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.botones{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+
+    position: absolute;
+    width: 46%;
+    height: 67px;
+    left: 16%;
+    top: 85%;
+}
+
+.btn-encriptar{
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 14px;
+    font-weight: bold;
+    width: 45%;
+    height: 90%;
+    background: #0A3871;
+    border: none;
+    border-radius: 24px;
+    color: #F3F5FC;
+    transition: background 0.3s;
+}
+
+.btn-encriptar:hover{
+    cursor: pointer;
+    background: #052051;
+    transition: background 0.3s;
+}
+
+.btn-desencriptar{
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 15px;
+    font-weight: bold;
+    width: 45%;
+    height: 90%;
+    background: #E9ECF8;
+    border: 2px solid #0A3871;
+    border-radius: 24px;
+    color: #0A3871;
+    transition: background 0.3s;
+}
+
+.btn-desencriptar:hover{
+    cursor: pointer;
+    background: #AAB2D5;
+    transition: background 0.3s;
+}
+
+
+
+@media only screen and (min-width: 1240px) {
+    .muñeco{
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1240px) {
+    .muñeco{
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 767px){
+    .muñeco{
+        display: none;
+    }
+}

@@ -4,36 +4,55 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <!------------------------ Fuentes ------------------------>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-        <link rel="shortcut icon" href="img/alura.svg">
+        <!------------------------ Estilos ------------------------>
+        <link rel="stylesheet" href="styles/reset.css">
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/tablet.css" media="screen and (min-width: 768px) and (max-width: 991px)">
+        <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 992px)">
+        <!------------------------ Icono ------------------------>
+        <link rel="shortcut icon" href="img/encrypter.svg">
+        <!------------------------ Título ------------------------>
         <title>Encriptador</title>
     </head>
+
     <body>
-        <div class="logo">
-            <img class="alura" src="img/alura.svg" draggable="false">
-        </div>
-        <textarea id="inputText" class="textoEntrada" wrap="soft"></textarea>
-        <div class="bloque">
-            <p id="resultado" class="textoFinal"></p>
-            <button id="btnCopiar" class="btn-copiar" onclick="copiar()">Copiar</button>
-            <img id="muñeco" class="muñeco" src="img/muñeco.svg" draggable="false">
-            <div id="textosIniciales" class="textosIniciales">
-                <p class="mensajeNoEncontrado">Ningún mensaje fue encontrado</p>
-                <p class="sugerencia">Ingresa el texto que desees encriptar o desencriptar</p>
+        <div class="container">
+
+            <div class="bloque">
+                <p class="texto-salida"></p>
+                <button class="btn-copiar" onclick="copiar()">Copiar</button>
+            </div>
+            
+            <label class="switch" draggable="false">
+                <input type="checkbox" onchange="cambiarTema()">
+                <span class="slider"></span>
+            </label>
+
+            <textarea class="texto-entrada" wrap="soft" placeholder="Ingrese el texto aquí" onkeyup="validar(event)"></textarea>
+            
+                <div class="reglas">
+                <img class="exclamation" src="img/exclamation-dark.svg" draggable="false">
+                <p>Solo letras minúsculas y sin acento</p>
+            </div>
+            
+            <div class="botones">
+                <button class="btn-encriptar" onclick="encriptar()">Encriptar</button>
+                <button class="btn-desencriptar" onclick="desencriptar()">Desencriptar</button>
             </div>
         </div>
-        <div class="reglas">
-            <img class="exclamation" src="img/exclamation.svg" draggable="false">
-            <p>Solo letras minúsculas y sin acento</p>
-        </div>
-        <div class="botones">
-            <button class="btn-encriptar" onclick="encriptar()">Encriptar</button>
-            <button class="btn-desencriptar" onclick="desencriptar()">Desencriptar</button>
-        </div>
-        <script src="script.js"></script>
+
+        <footer>
+            <span>&copy; 2022 - Made by KSAplay</span>
+            
+            <a href="https://www.linkedin.com/in/mariana-arias-montoya-b37a311a7/" target="_blank"><img class="icon_linkedin" src="./image/icon-linkedin.png" alt="linkedIn"></a>
+            <a href="https://github.com/mariasmoUN" target="_blank"><img class="icon_github" src="./image/icon-github.png" alt="GitHub"></a>
+        </footer>
+
+        <script type="text/javascript" src="script.js"></script>
     </body>
 </html>

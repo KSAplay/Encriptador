@@ -1,70 +1,95 @@
 
-const inputText = document.getElementById('inputText');
-const resultado = document.getElementById('resultado');
-const btnCopiar = document.getElementById('btnCopiar');
-const muñeco = document.getElementById('muñeco');
-const textosIniciales = document.getElementById('textosIniciales');
+const textoEntrada = document.querySelector('.texto-entrada');
+const textoSalida = document.querySelector('.texto-salida');
+const bloqueResultado = document.querySelector('.bloque');
 
-inputText.value = "Ingrese el texto aqui";
-
-inputText.addEventListener('focusout', () =>{
-    if(inputText.value == ""){
-        inputText.value = "Ingrese el texto aqui";
-    }
-});
-
-inputText.addEventListener('focusin', () =>{
-    if(inputText.value == "Ingrese el texto aqui"){
-        inputText.value = "";
-    }
-});
-
-var texto = "";
+var texto = "", temaOscuro = false;
 
 function encriptar(){
-    if(inputText.value == "Ingrese el texto aqui"){
-        muñeco.style.display = "block";
-        textosIniciales.style.display = "flex";
-        resultado.style.display = "none";
-        btnCopiar.style.display = "none";
+    if(textoEntrada.value == "" || textoEntrada.value == null){
+        bloqueResultado.add('display: none');
     } else {
-        muñeco.style.display = "none";
-        textosIniciales.style.display = "none";
-        resultado.style.display = "block";
-        btnCopiar.style.display = "block";
-        texto = inputText.value;
+        bloqueResultado.add('display: block');
+
+        texto = textoEntrada.value;
         texto = texto.replaceAll("e","enter");
         texto = texto.replaceAll("i","imes");
         texto = texto.replaceAll("a","ai");
         texto = texto.replaceAll("o","ober");
         texto = texto.replaceAll("u","ufat");
 
-        resultado.textContent = texto;
+        textoSalida.textContent = texto;
     }
 }
 
 function desencriptar(){
-    if(inputText.value == "Ingrese el texto aqui"){
-        muñeco.style.display = "block";
-        textosIniciales.style.display = "flex";
-        resultado.style.display = "none";
-        btnCopiar.style.display = "none";
+    if(textoEntrada.value == ""){
+        if(window.innerWidth >= 900){
+            muñeco.style.display = "block";
+        } else {
+            muñeco.style.display = "none";
+        }
+        textosIniciales.style.display = "block";
+        textoSalida.style.display = "none";
     } else {
         muñeco.style.display = "none";
         textosIniciales.style.display = "none";
-        resultado.style.display = "block";
-        btnCopiar.style.display = "block";
-        texto = inputText.value;
+        textoSalida.style.display = "block";
+        texto = textoEntrada.value;
         texto = texto.replaceAll("ai","a");
         texto = texto.replaceAll("enter","e");
         texto = texto.replaceAll("imes","i");
         texto = texto.replaceAll("ober","o");
         texto = texto.replaceAll("ufat","u");
 
-        resultado.textContent = texto;
+        textoSalida.textContent = texto;
     }
 }
 
+function validar(e){
+    textoEntrada.value = textoEntrada.value.toLowerCase();
+    let key = e.keyCode || e.which;
+    let especiales="8-37-38-46-164";
+    let teclaEspeciales = false;
+
+    for (var i in especiales){
+        if (key == especiales[i]){
+            teclaEspeciales = true;
+            break;
+        }
+    }
+    texto = textoEntrada.value;
+    if(texto.match('[á,é,í,ó,ú]') != null && !teclaEspeciales){
+        textoEntrada.value = texto.substring(0, texto.length() - 1);
+    }     
+}
+
 function copiar(){
-    navigator.clipboard.writeText(resultado.textContent);
+    navigator.clipboard.writeText(textoSalida.textContent);
+}
+
+function cambiarTema(){
+    if(temaOscuro){
+        // Pasar a Tema Claro
+        document.querySelector('.reglas').querySelector('p').style.color = "#0A3871";
+        document.querySelector('.reglas').querySelector('img').src = "img/exclamation-dark.svg";
+        document.body.style.backgroundColor = "#F3F5FC";
+        textoEntrada.style.color = "#052051";
+        textoEntrada.classList.remove("texto-entrada-light");
+        textoEntrada.classList.add("texto-entrada-dark");
+        document.querySelector('.btn-encriptar').style.backgroundColor = "#0A3871";
+        document.querySelector('.btn-encriptar').style.color = "#F3F5FC";
+        temaOscuro = false;
+    } else {
+        // Pasar a Tema Oscuro
+        document.querySelector('.reglas').querySelector('p').style.color = "#F3F5FC";
+        document.querySelector('.reglas').querySelector('img').src = "img/exclamation-light.svg";
+        document.body.style.backgroundColor = "#052051";
+        textoEntrada.style.color = "#F3F5FC";
+        textoEntrada.classList.remove("texto-entrada-dark");
+        textoEntrada.classList.add("texto-entrada-light");
+        document.querySelector('.btn-encriptar').style.backgroundColor = "#E9ECF8";
+        document.querySelector('.btn-encriptar').style.color = "#0A3871";
+        temaOscuro = true;
+    }
 }

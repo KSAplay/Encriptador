@@ -23,18 +23,10 @@ function encriptar(){
 }
 
 function desencriptar(){
-    if(textoEntrada.value == ""){
-        if(window.innerWidth >= 900){
-            muñeco.style.display = "block";
-        } else {
-            muñeco.style.display = "none";
-        }
-        textosIniciales.style.display = "block";
-        textoSalida.style.display = "none";
+    if(textoEntrada.value == "" || textoEntrada.value == null){
+        bloqueResultado.style.display = "none";
     } else {
-        muñeco.style.display = "none";
-        textosIniciales.style.display = "none";
-        textoSalida.style.display = "block";
+        bloqueResultado.style.display = "block";
         texto = textoEntrada.value;
         texto = texto.replaceAll("ai","a");
         texto = texto.replaceAll("enter","e");
@@ -79,10 +71,6 @@ function validar(e){
 }
 
 function copiar(){
-    // if(window.innerWidth < 768){
-    //     textoSalida.select();
-    //     textoSalida.setSelectionRange(0,99999);
-    // }
     window.Clipboard = (function(window, document, navigator) {
         var textArea,
             copy;
@@ -129,7 +117,7 @@ function copiar(){
         };
     })(window, document, navigator);
     Clipboard.copy(texto);
-    
+
     bloqueResultado.style.display = "none";
 }
 

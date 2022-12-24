@@ -15,29 +15,43 @@
         <link rel="stylesheet" href="styles/tablet.css" media="screen and (min-width: 768px) and (max-width: 991px)">
         <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 992px)">
         <!------------------------ Icono ------------------------>
-        <link rel="shortcut icon" href="img/encrypter.svg">
+        <link rel="shortcut icon" href="assets/encrypter.svg">
         <!------------------------ Título ------------------------>
         <title>Encriptador</title>
     </head>
 
     <body>
         <div class="container">
-
-            <div class="bloque">
-                <p class="texto-salida"></p>
-                <button class="btn-copiar" onclick="copiar()">Copiar</button>
+            <div class="notificaciones">
+                <div class="no-mensaje">
+                    <i class="fa-solid fa-circle-xmark icon-notify"></i>No ingresó ningún texto
+                </div>
+                <div class="tiene-acento">
+                    <i class="fa-solid fa-triangle-exclamation icon-notify"></i>Revise las condiciones
+                </div>
+                <div class="texto-copiado">
+                    <i class="fa-solid fa-circle-check icon-notify"></i>Texto copiado
+                </div>
             </div>
+            <div class="contenedor-bloque">
+                <div class="bloque">
+                    <p class="texto-salida"></p>
+                    <button class="btn-copiar" onclick="copiar()">Copiar</button>
+                    <button class="btn-cerrar" onclick="cerrarBloque()">Cerrar</button>
+                </div>
+            </div>
+            <div class="tema-container">
+                <i class="fa-solid fa-sun icon-switch"></i>
+                <label class="switch" draggable="false">
+                    <input type="checkbox" onchange="cambiarTema()">
+                    <span class="slider"></span>
+                </label>
+                <i class="fa-solid fa-moon icon-switch"></i>
+            </div>
+            <textarea class="texto-entrada" wrap="soft" placeholder="Ingrese el texto aquí"></textarea>
             
-            <label class="switch" draggable="false">
-                <input type="checkbox" onchange="cambiarTema()">
-                <span class="slider"></span>
-            </label>
-
-            <textarea class="texto-entrada" wrap="soft" placeholder="Ingrese el texto aquí" onkeyup="validar(event)"></textarea>
-            
-                <div class="reglas">
-                <img class="exclamation" src="img/exclamation-dark.svg" draggable="false">
-                <p>Solo letras minúsculas y sin acento</p>
+            <div class="reglas">
+                <i class="fa-sharp fa-solid fa-circle-exclamation exclamation"></i><p class="texto-reglas">Solo letras minúsculas y sin acento</p>
             </div>
             
             <div class="botones">
@@ -48,10 +62,13 @@
 
         <footer>
             <span>&copy; 2022 - Made by KSAplay</span>
-            <a href="https://www.linkedin.com/in/kenny-saavedra-altuna/" target="_blank"><img class="icon-linkedin" src="/img/icon-linkedin-dark.svg" alt="LinkedIn"></a>
-            <a href="https://github.com/KSAplay" target="_blank"><img class="icon-github" src="/img/icon-github-dark.svg" alt="GitHub"></a>
+            <ul class="icons">
+                <li class="icon"><a href="https://github.com/KSAplay" target="__blank"><i class="fa-brands fa-github"></i></a></li>
+                <li class="icon"><a href="https://www.linkedin.com/in/kenny-saavedra-altuna/" target="__blank"><i class="fa-brands fa-linkedin"></i></a></li>
+            </ul>
         </footer>
 
+        <script src="https://kit.fontawesome.com/7b9f8c27b2.js" crossorigin="anonymous"></script>
         <script type="text/javascript" src="script.js"></script>
     </body>
 </html>

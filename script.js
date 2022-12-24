@@ -6,26 +6,30 @@ const noMensajeNotify = document.querySelector('.no-mensaje');
 const tieneAcentoNotify = document.querySelector('.tiene-acento');
 const textoCopiadoNotify = document.querySelector('.texto-copiado');
 
-var texto = "", longitudInput = 28, pixelAlturaInput = 31;
-var tieneAcento = false, temaOscuro = false, estaMostrandoNotify = false;
+var textoActual = "", textoNuevo = "";
+var longitudInput = 28, pixelAlturaInput = 31;
+var cumpleCondiciones = false, temaOscuro = false, estaMostrandoNotify = false;
 
 function encriptar(){
     if(textoEntrada.value == '' || textoEntrada.value == null ){
         mostrarNotificacion(noMensajeNotify);
-    } else if(tieneAcento){
+    } else if(cumpleCondiciones){
         mostrarNotificacion(tieneAcentoNotify);
     } else {
         textoSalida.textContent = '';
         bloqueResultado.style.display = "block";
-        texto = textoEntrada.value;
-        texto = texto.replaceAll("e","enter");
-        texto = texto.replaceAll("i","imes");
-        texto = texto.replaceAll("a","ai");
-        texto = texto.replaceAll("o","ober");
-        texto = texto.replaceAll("u","ufat");
+        textoActual = textoEntrada.value;
+        textoNuevo = textoActual.split("").map((char) => {
+            if (char === "a") return "ai";
+            if (char === "e") return "enter";
+            if (char === "i") return "imes";
+            if (char === "o") return "ober";
+            if (char === "u") return "ufat";
+            return char;
+        }).join("");
 
         setTimeout(()=>{
-            animacionEscritura(texto);
+            animacionEscritura(textoNuevo);
         },200);
     }
 }
@@ -33,39 +37,43 @@ function encriptar(){
 function desencriptar(){
     if(textoEntrada.value == "" || textoEntrada.value == null){
         mostrarNotificacion(noMensajeNotify);
-    } else if(tieneAcento){
+    } else if(cumpleCondiciones){
         mostrarNotificacion(tieneAcentoNotify);
     } else {
         textoSalida.textContent = '';
         bloqueResultado.style.display = "block";
-        texto = textoEntrada.value;
-        texto = texto.replaceAll("ai","a");
-        texto = texto.replaceAll("enter","e");
-        texto = texto.replaceAll("imes","i");
-        texto = texto.replaceAll("ober","o");
-        texto = texto.replaceAll("ufat","u");
+        textoActual = textoEntrada.value;
+        textoNuevo = textoActual.replace(/ai|enter|imes|ober|ufat/g, (match) => {
+            if (match === "ai") return "a";
+            if (match === "enter") return "e";
+            if (match === "imes") return "i";
+            if (match === "ober") return "o";
+            if (match === "ufat") return "u";
+        });
 
         setTimeout(()=>{
-            animacionEscritura(texto);
+            animacionEscritura(textoNuevo);
         },200);
     }
 }
 
-function soloLetras(texto){
-    return texto ? !/[^a-z\sñ]/.test(texto) : true;
+function caracteresPermitidos(texto){
+    return texto ? !/[^a-z\sñ,.¡!¿?]/.test(texto) : true;
 }
-
-function validar(e){
-
+// Validación de cada input ingresado
+textoEntrada.addEventListener('input', () => {
+    // Pasamos el texto que ingresa a minúsculas
     textoEntrada.value = textoEntrada.value.toLowerCase();
-    texto = textoEntrada.value;
-
-    if(!soloLetras(texto)){
-        tieneAcento = true;
+    
+    let texto = textoEntrada.value;
+    // Verifica si el texto incluye o no los valores permitidos
+    // (en este caso solo minusculas y algunos caracteres especiales)
+    if(!caracteresPermitidos(texto)){
+        cumpleCondiciones = true;
         document.querySelector('.reglas').style.animation = 'shake-horizontal 0.8s ease-in-out both';
         document.querySelector('.reglas').style.color = "#e93f3f";
     } else {
-        tieneAcento = false;
+        cumpleCondiciones = false;
         document.querySelector('.reglas').style.animation = '';
         if(temaOscuro){
             document.querySelector('.reglas').style.color = "#fafbff";
@@ -74,7 +82,7 @@ function validar(e){
         }
     }
     comprobarTamañoInput();
-}
+});
 
 function copiar(){
     window.Clipboard = (function(window, document, navigator) {
@@ -122,7 +130,7 @@ function copiar(){
             copy: copy
         };
     })(window, document, navigator);
-    Clipboard.copy(texto);
+    Clipboard.copy(textoNuevo);
 
     cerrarBloque();
     mostrarNotificacion(textoCopiadoNotify);
@@ -167,7 +175,7 @@ function cambiarTema(){
         document.querySelector('.fa-linkedin').style.color = "#fafbff";
     }
 
-    if(tieneAcento) {
+    if(cumpleCondiciones) {
         document.querySelector('.reglas').style.color = "#e93f3f";
     }
 }
@@ -227,5 +235,3 @@ function comprobarTamañoInput(){
         textoEntrada.style.height = pixelAlturaInput+"px";
     }
 }
-
-textoEntrada.addEventListener('input', validar);

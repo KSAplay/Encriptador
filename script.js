@@ -6,7 +6,7 @@ const tieneAcentoNotify = document.querySelector('.tiene-acento');
 const textoCopiadoNotify = document.querySelector('.texto-copiado');
 
 var textoActual = "", textoNuevo = "";
-var vecesAlturaAñadida = 0, pixelAlturaInput = 31;
+var vecesAlturaAñadida = 0, incrementoInput = 31, pixelAlturaInput = textoEntrada.clientHeight;
 var cumpleCondiciones = false, temaOscuro = false, estaMostrandoNotify = false;
 
 function encriptar(){
@@ -65,8 +65,7 @@ textoEntrada.addEventListener('input', () => {
     textoEntrada.value = textoEntrada.value.toLowerCase();
     
     let texto = textoEntrada.value;
-    // Verifica si el texto incluye o no los valores permitidos
-    // (en este caso solo minusculas y algunos caracteres especiales)
+    // Verifica si el texto incluye o no los valores permitidos (solo minusculas y algunos caracteres especiales)
     if(!caracteresPermitidos(texto)){
         cumpleCondiciones = true;
         document.querySelector('.reglas').style.animation = 'shake-horizontal 0.8s ease-in-out both';
@@ -80,7 +79,9 @@ textoEntrada.addEventListener('input', () => {
             document.querySelector('.reglas').style.color = "#073481";
         }
     }
-    comprobarTamañoInput();
+    // Ajusta el tamaño del textArea en base al texto ingresado.
+    textoEntrada.style.height = "31px";
+    textoEntrada.style.height = (textoEntrada.scrollHeight-4)+"px";
 });
 
 function copiar(){
@@ -220,27 +221,4 @@ function mostrarNotificacion(notify){
             estaMostrandoNotify = false;
         }, 2500);
     }
-}
-
-function comprobarTamañoInput(){
-    // while(texto.length + 28 < longitudInput){
-    //     longitudInput -= 28;
-    //     pixelAlturaInput -= 31;
-    //     textoEntrada.style.height = pixelAlturaInput+"px";
-    // }
-    // while(texto.length >= longitudInput){
-    //     longitudInput += 28;
-    //     pixelAlturaInput += 31;
-    //     textoEntrada.style.height = pixelAlturaInput+"px";
-    // }
-    while(textoEntrada.clientHeight < textoEntrada.scrollHeight){
-        pixelAlturaInput += 31;
-        textoEntrada.style.height = pixelAlturaInput+"px";
-        vecesAlturaAñadida++;
-    }
-    // if(vecesAlturaAñadida > 0 && textoEntrada.clientHeight - 31 > textoEntrada.scrollHeight){
-    //     pixelAlturaInput -= 31;
-    //     textoEntrada.style.height = pixelAlturaInput+"px";
-    //     vecesAlturaAñadida--;
-    // }
 }

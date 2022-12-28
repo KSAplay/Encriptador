@@ -1,6 +1,7 @@
+/*--------------------- Slider --------------------*/
 .icon-switch{
     margin: 0 10px;
-    font-size: 23px;
+    font-size: 25px;
 }
 
 .switch {
@@ -17,13 +18,87 @@
     left: 5px;
     bottom: 5px;
 }
-/*-------------------------------------------------*/
+/*------------------ Texto de Entrada ---------------*/
 .texto-entrada{
-    font-size: 20px;
+    font-size: 23px;
     line-height: 150%;
-    width: 80%;
+    height: 35px;
+}
+/*------------------ Bloque resultante --------------*/
+.bloque{
+    width: 75%;
+}
+/*-------------------- Texto final ------------------*/
+.texto-salida{
+    font-size: 23px;
+    padding: 5% 5%;
+}
+.texto-salida::after {
+    font-size: 23px;
+}
+/*------------ Botones Copiar y Cerrar ------------*/
+.btn-copiar,.btn-cerrar{
+    font-size: 17px;
+    width: 35%;
+    height: 48px;
+    margin: 0 10px 5% 10px;
 }
 
-/*-------------------------------------------------*/
+.btn-copiar:active, .btn-cerrar:active{
+    transform: scale(.94);
+}
+/*------------------- Condiciones -----------------*/
+.reglas{
+    bottom: 115px;
+    width: 270px;
+}
 
-/*-------------------------------------------------*/
+.texto-reglas{
+    font-size: 15px;
+}
+/*-------- Botones Encriptar y Desencriptar --------*/
+.btn-encriptar,.btn-desencriptar{
+    font-size: 17px;
+    width: 80%;
+    margin: 0 3%;
+}
+
+.btn-encriptar:active,.btn-desencriptar:active{
+    transform: scale(.94);
+}
+/*--------------------- Footer --------------------*/
+.contenedor-footer > span {
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.contenedor-footer{
+    width: 40%;
+}
+
+footer > .contenedor-footer {
+  animation: movingFooter 20s linear infinite;
+}
+
+.icons {
+    gap: 10px;
+}
+  
+.icon a {
+    font-size: 20px;
+}
+/*------------------ Notificaciones ------------------*/
+.no-mensaje,.texto-copiado,.tiene-acento{
+    font-size: 16px;
+    width: 290px;
+    height: 55px;
+}
+
+.texto-copiado{
+    width: 230px;
+}
+
+.icon-notify{
+    margin-right: 10px;
+    font-size: 23px;
+}

@@ -1,19 +1,21 @@
+/*-------------------- Fuente: Inter ---------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-/*-------------------------------------------------*/
+
+/*----------------------- Body -------------------------*/
 body{
     background-color: #fafbff;
     display: flex;
     justify-content: center;
     transition: background-color .4s;
 }
-/*-------------------------------------------------*/
+/*------------------ Contenedor global ------------------*/
 .container{
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: 'Inter';
 }
-/*-------------------------------------------------*/
+/*------------------ Tema Claro y Oscuro ------------------*/
 .tema-container{
     position: absolute;
     display: inline-flex;
@@ -27,7 +29,7 @@ body{
     font-size: 18px;
     transition: .4s;
 }
-
+/*---- Iconos sol y luna ----*/
 .fa-sun{
     color: #9bc8ff;
 }
@@ -35,7 +37,7 @@ body{
 .fa-moon{
     color: #3566a1;
 }
-
+/*---- Slider ----*/
 .switch {
     position: relative;
     width: 55px;
@@ -92,7 +94,7 @@ border-radius: 34px;
 .slider:before {
 border-radius: 50%;
 }
-/*-------------------------------------------------*/
+/*------------------ Texto de Entrada ------------------*/
 .texto-entrada{
     position: absolute;
     z-index: 0;
@@ -107,7 +109,7 @@ border-radius: 50%;
     transform: translate(0, -50%);
     width: 80%;
     height: 31px;
-    max-height: 400px;
+    max-height: 60%;
     resize: none;
     transition: color .4s;
 }
@@ -133,7 +135,7 @@ border-radius: 50%;
     opacity: .5;
     transition: color .4s;
 }
-/*-------------------------------------------------*/
+/*------------------ Bloque Resultante ------------------*/
 .contenedor-bloque{
     position: absolute;
     display: flex;
@@ -149,17 +151,15 @@ border-radius: 50%;
     text-align: center;
     z-index: 10;
     width: 80%;
-    background: white;
+    background-color: white;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     border-radius: 15px;
-    transition: .4s;
+    transition: background-color .4s;
     animation: aparecer-bloque 0.3s ease both;
 }
-/*-------------------------------------------------*/
+/*-------------------- Texto Final --------------------*/
 .texto-salida{
     font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
     font-size: 18px;
     line-height: 150%;
     padding: 5% 5%;
@@ -173,7 +173,7 @@ border-radius: 50%;
     font-size: 18px;
     animation: barra 1s ease-in-out infinite;
 }
-/*-------------------------------------------------*/
+/*-------------------- Botones Copiar y Cerrar --------------------*/
 .btn-copiar,.btn-cerrar{
     font-family: 'Inter';
     font-size: 15px;
@@ -198,24 +198,24 @@ border-radius: 50%;
     background: linear-gradient(45deg, rgba(14,193,89,1) 0%, rgba(0,79,117,1) 100%);
 }
 
-.btn-copiar:hover, .btn-cerrar:hover{
+.btn-cerrar{
+    background: linear-gradient(45deg, rgba(233,63,63,1) 0%, rgba(142,3,3,1) 100%);
+}
+
+.btn-copiar:active, .btn-cerrar:active{
     cursor: pointer;
     transform: scale(.9);
     transition: .4s;
 }
-
-.btn-cerrar{
-    background: linear-gradient(45deg, rgba(233,63,63,1) 0%, rgba(142,3,3,1) 100%);
-}
-/*-------------------------------------------------*/
+/*-------------------- Reglas o Condiciones --------------------*/
 .reglas{
     position: absolute;
     display: inline-flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 62%;
-    top: 81%;
+    width: 220px;
+    bottom: 115px;
     opacity: .8;
     color: #102569;
     
@@ -232,12 +232,12 @@ border-radius: 50%;
     font-size: 12px;
     transition: color .4s;
 }
-
+/*-- Icono exclamación --*/
 .exclamation {
     margin-right: 5px;
     transition: color .4s;
 }
-/*-------------------------------------------------*/
+/*-------------------- Botones Encriptar y Desencriptar --------------------*/
 .botones{
     position: absolute;
     display: inline-flex;
@@ -245,7 +245,7 @@ border-radius: 50%;
     justify-content: center;
     width: 90%;
     height: 60px;
-    top: 85%;
+    bottom: 40px;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -272,33 +272,32 @@ border-radius: 50%;
     background: linear-gradient(45deg, rgba(0,202,255,1) 0%, rgba(0,52,255,1) 100%);
 }
 
-.btn-encriptar:hover{
+.btn-encriptar:active{
     cursor: pointer;
     transform: scale(.9);
     transition: all .4s;
 }
-/*-------------------------------------------------*/
+
 .btn-desencriptar{
     background: linear-gradient(45deg, rgba(27,169,239,1) 0%, rgba(13,224,190,1) 100%);
 }
 
-.btn-desencriptar:hover{
+.btn-desencriptar:active{
     cursor: pointer;
     transform: scale(.9);
     transition: all .4s;
 }
-/*-------------------------------------------------*/
+/*----------------------- Footer -----------------------*/
 footer {
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    top: 95%;
+    white-space: nowrap;
+    bottom: 10px;
     opacity: .6;
-    width: 50%;
-    animation: movingFooter 4s linear alternate infinite;
-
+    width: 100%;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -307,14 +306,26 @@ footer {
             user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
-footer>span {
+.contenedor-footer > span {
     font-family: 'Inter';
     font-size: 10px;
     color: #2e2e2e;
-    margin-right: 5px;
+    margin-right: 8px;
     transition: color .4s;
 }
 
+.contenedor-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 168px;
+}
+
+footer > .contenedor-footer {
+  animation: movingFooter 10s linear infinite;
+}
+
+/*-- Iconos del Footer --*/
 .icons {
     display: flex;
     gap: 8px;
@@ -328,7 +339,7 @@ footer>span {
 .fa-github,.fa-linkedin{
     transition: color .4s;
 }
-/*-------------------------------------------------*/
+/*----------------------- Notificaciones -----------------------*/
 .notificaciones{
     position: absolute;
     z-index: 100;
@@ -346,34 +357,11 @@ footer>span {
     border-radius: 8px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
-
+/*-- Por no cumplir las condiciones ---*/
 .tiene-acento{
     display: none;
     color: #ff9900;
     background-color: #ffe8c2;
-}
-
-.no-mensaje{
-    display: none;
-    color: #FF475D;
-    background-color: #FFE0E5;
-}
-
-.texto-copiado{
-    display: none;
-    width: 200px;
-    color: #31D272;
-    background-color: #dffcea;
-}
-
-.no-mensaje::before{
-    position: absolute;
-    left: 0;
-    content: '';
-    width: 12px;
-    height: 100%;
-    border-radius: 8px 0px 0px 8px;
-    background-color: #FF475D;
 }
 
 .tiene-acento::before{
@@ -385,6 +373,29 @@ footer>span {
     border-radius: 8px 0px 0px 8px;
     background-color: #ff9900;
 }
+/*-- Por no ingresar ningún texto ---*/
+.no-mensaje{
+    display: none;
+    color: #FF475D;
+    background-color: #FFE0E5;
+}
+
+.no-mensaje::before{
+    position: absolute;
+    left: 0;
+    content: '';
+    width: 12px;
+    height: 100%;
+    border-radius: 8px 0px 0px 8px;
+    background-color: #FF475D;
+}
+/*-- Por copiar el texto resultante ---*/
+.texto-copiado{
+    display: none;
+    width: 200px;
+    color: #31D272;
+    background-color: #dffcea;
+}
 
 .texto-copiado::before{
     position: absolute;
@@ -395,19 +406,19 @@ footer>span {
     border-radius: 8px 0px 0px 8px;
     background-color: #31D272;
 }
-
+/*-- Iconos de las notificaciones ---*/
 .icon-notify{
     margin-right: 7px;
     font-size: 20px;
 }
 
-/*-------------------------------------------------*/
+/*----------------------- Animaciones -----------------------*/
 @keyframes movingFooter{
    0%{
-    transform: translateX(-50%);
+    transform: translateX(-170%);
    }
    100%{
-    transform: translateX(50%);
+    transform: translateX(170%);
    }
 }
 
@@ -491,4 +502,4 @@ footer>span {
     80%, 100%{
       opacity: 0;
     }
-  }
+}

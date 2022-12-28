@@ -1,4 +1,3 @@
-
 const textoEntrada = document.querySelector('.texto-entrada');
 const textoSalida = document.querySelector('.texto-salida');
 const bloqueResultado = document.querySelector('.bloque');
@@ -7,7 +6,7 @@ const tieneAcentoNotify = document.querySelector('.tiene-acento');
 const textoCopiadoNotify = document.querySelector('.texto-copiado');
 
 var textoActual = "", textoNuevo = "";
-var longitudInput = 28, pixelAlturaInput = 31;
+var vecesAlturaAñadida = 0, pixelAlturaInput = 31;
 var cumpleCondiciones = false, temaOscuro = false, estaMostrandoNotify = false;
 
 function encriptar(){
@@ -224,14 +223,24 @@ function mostrarNotificacion(notify){
 }
 
 function comprobarTamañoInput(){
-    while(texto.length + 28 < longitudInput){
-        longitudInput -= 28;
-        pixelAlturaInput -= 31;
-        textoEntrada.style.height = pixelAlturaInput+"px";
-    }
-    while(texto.length >= longitudInput){
-        longitudInput += 28;
+    // while(texto.length + 28 < longitudInput){
+    //     longitudInput -= 28;
+    //     pixelAlturaInput -= 31;
+    //     textoEntrada.style.height = pixelAlturaInput+"px";
+    // }
+    // while(texto.length >= longitudInput){
+    //     longitudInput += 28;
+    //     pixelAlturaInput += 31;
+    //     textoEntrada.style.height = pixelAlturaInput+"px";
+    // }
+    while(textoEntrada.clientHeight < textoEntrada.scrollHeight){
         pixelAlturaInput += 31;
         textoEntrada.style.height = pixelAlturaInput+"px";
+        vecesAlturaAñadida++;
     }
+    // if(vecesAlturaAñadida > 0 && textoEntrada.clientHeight - 31 > textoEntrada.scrollHeight){
+    //     pixelAlturaInput -= 31;
+    //     textoEntrada.style.height = pixelAlturaInput+"px";
+    //     vecesAlturaAñadida--;
+    // }
 }

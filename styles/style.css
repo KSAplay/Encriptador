@@ -4,7 +4,7 @@ body{
     background-color: #fafbff;
     display: flex;
     justify-content: center;
-    transition: .4s;
+    transition: background-color .4s;
 }
 /*-------------------------------------------------*/
 .container{
@@ -56,7 +56,7 @@ body{
     right: 0;
     bottom: 0;
     background: linear-gradient(45deg, rgba(0,202,255,1) 0%, rgba(0,52,255,1) 100%);
-    opacity: .6;
+    opacity: .8;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -103,9 +103,8 @@ border-radius: 50%;
     font-size: 20px;
     line-height: 150%;
     color: #2e2e2e;
-    top: 35%;
+    top: 45%;
     transform: translate(0, -50%);
-    margin: 10% 0;
     width: 80%;
     height: 31px;
     max-height: 400px;
@@ -324,6 +323,9 @@ footer>span {
 .icon a {
     font-size: 18px;
     color: #2e2e2e;
+}
+
+.fa-github,.fa-linkedin{
     transition: color .4s;
 }
 /*-------------------------------------------------*/

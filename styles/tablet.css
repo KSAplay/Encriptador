@@ -1,0 +1,29 @@
+.icon-switch{
+    margin: 0 10px;
+    font-size: 23px;
+}
+
+.switch {
+    position: relative;
+    width: 60px;
+    height: 33px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 23px;
+    width: 23px;
+    left: 5px;
+    bottom: 5px;
+}
+/*-------------------------------------------------*/
+.texto-entrada{
+    font-size: 20px;
+    line-height: 150%;
+    width: 80%;
+}
+
+/*-------------------------------------------------*/
+
+/*-------------------------------------------------*/

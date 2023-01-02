@@ -157,6 +157,10 @@ border-radius: 50%;
     transition: background-color .4s;
     animation: aparecer-bloque 0.3s ease both;
 }
+/*-------------------- Imagen bloque --------------------*/
+.imagen-bloque{
+    display: none;
+}
 /*-------------------- Texto Final --------------------*/
 .texto-salida{
     font-family: 'Inter';
@@ -176,7 +180,7 @@ border-radius: 50%;
 /*-------------------- Botones Copiar y Cerrar --------------------*/
 .btn-copiar,.btn-cerrar{
     font-family: 'Inter';
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
     width: 40%;
     height: 40px;

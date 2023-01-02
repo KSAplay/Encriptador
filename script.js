@@ -10,11 +10,19 @@ var vecesAlturaAñadida = 0, incrementoInput = 31, pixelAlturaInput = textoEntra
 var cumpleCondiciones = false, temaOscuro = false, estaMostrandoNotify = false;
 
 function encriptar(){
+    textoNuevo = "";
     if(textoEntrada.value == '' || textoEntrada.value == null ){
         mostrarNotificacion(noMensajeNotify);
+        if(window.innerWidth >= 992){
+            document.querySelector('.btn-copiar').style.display = 'none';
+            textoSalida.style.display = 'none';
+        }
     } else if(cumpleCondiciones){
         mostrarNotificacion(tieneAcentoNotify);
     } else {
+        if(window.innerWidth >= 992){
+            textoSalida.style.display = 'block';
+        }
         textoSalida.textContent = '';
         bloqueResultado.style.display = "block";
         textoActual = textoEntrada.value;
@@ -34,6 +42,7 @@ function encriptar(){
 }
 
 function desencriptar(){
+    textoNuevo = "";
     if(textoEntrada.value == "" || textoEntrada.value == null){
         mostrarNotificacion(noMensajeNotify);
     } else if(cumpleCondiciones){
@@ -132,7 +141,9 @@ function copiar(){
     })(window, document, navigator);
     Clipboard.copy(textoNuevo);
 
-    cerrarBloque();
+    if(window.innerWidth < 992){
+        cerrarBloque();
+    }
     mostrarNotificacion(textoCopiadoNotify);
 }
 
@@ -203,6 +214,9 @@ function animacionEscritura(texto) {
         pos++
       } else {
         clearInterval(interval);
+        if(window.innerWidth >= 992){
+            document.querySelector('.btn-copiar').style.display = 'block';
+        }
       }
     }, 30);
   }

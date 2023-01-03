@@ -160,13 +160,14 @@ border-radius: 50%;
 /*-------------------- Imagen bloque --------------------*/
 .imagen-bloque{
     display: none;
+    animation: aparecer-imagen 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 }
 /*-------------------- Texto Final --------------------*/
 .texto-salida{
     font-family: 'Inter';
     font-size: 18px;
     line-height: 150%;
-    padding: 5% 5%;
+    padding: 5%;
     color: #2e2e2e;
     word-wrap: break-word;
     overflow: auto;
@@ -338,6 +339,7 @@ footer > .contenedor-footer {
 .icon a {
     font-size: 18px;
     color: #2e2e2e;
+    transition: .2s;
 }
 
 .fa-github,.fa-linkedin{

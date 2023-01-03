@@ -12,8 +12,10 @@ body{
 .texto-entrada{
     margin-right: 60px;
     text-align: left;
+    top: 40%;
     left: 7%;
     width: 40%;
+    max-height: 30%;
 }
 
 /*------------------ Bloque Resultante ------------------*/
@@ -24,52 +26,50 @@ body{
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: 95%;
 }
 .bloque{
     display: block;
     text-align: left;
     z-index: 10;
     width: 40%;
-    height: 75%;
+    height: auto;
     right: 7%;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     border-radius: 15px;
-
+    transition: .4s;
     animation: none;
 }
 /*-------------------- Imagen bloque --------------------*/
 .imagen-bloque{
-    display: block;
-    margin: auto;
-    top: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    animation: aparecer-imagen 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+.imagen-bloque > img{
+    width: 60%;
+    height: 60%;
+    margin: 10% 0;
 }
 /*-------------------- Texto Final --------------------*/
 .texto-salida{
+    text-align: center;
     display: none;
-
-    font-size: 18px;
-    line-height: 150%;
-    padding: 5% 5%;
-    color: #2e2e2e;
-    word-wrap: break-word;
-    overflow: auto;
-    transition: color .4s;
+    padding: 4% 5%;
 }
-.texto-salida::after {
-    content : '|';
-    font-size: 18px;
-    animation: barra 1s ease-in-out infinite;
-}
-/*----------------------- b -----------------------*/
-.btn-copiar,.btn-cerrar{
+/*-------------------- Botones Copiar y Cerrar --------------------*/
+.btn-copiar{
+    margin: 0 auto 3% auto;
     width: 150px;
     height: 40px;
-    margin: 0 5px 5% 5px;
-    border: none;
-    border-radius: 25px;
-    transition: .4s;
+    transition: .3s;
+    animation: aparecer-imagen .2s;
 }
 
 .btn-cerrar,.btn-copiar{
@@ -78,7 +78,7 @@ body{
 
 .btn-copiar:hover{
     cursor: pointer;
-    transform: scale(1.03);
+    transform: scale(1.04);
     transition: .3s;
 }
 /*-------------------- Reglas o Condiciones --------------------*/
@@ -87,7 +87,7 @@ body{
     align-items: center;
     justify-content: flex-start;
     width: 40%;
-    bottom: 165px;
+    bottom: 280px;
     left: 7%;
 }
 /*-------------------- Botones Encriptar y Desencriptar --------------------*/
@@ -98,8 +98,8 @@ body{
     justify-content: flex-start;
     width: 40%;
     height: 60px;
-    bottom: 85px;
-    left: 7%;
+    bottom: 190px;
+    left: 11%;
     gap: 30px;
 }
 
@@ -132,3 +132,32 @@ footer{
 footer > .contenedor-footer {
     animation: none;
 }
+
+.icon a:hover {
+    color: #3566a1;
+}
+
+/*----------------------- Animaciones -----------------------*/
+@keyframes aparecer-imagen {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes desaparecer-bloque {
+    0% {
+        transform: rotateX(0deg);
+        transform-origin: top;
+        opacity: 1;
+    }
+    100% {
+        transform: rotateX(-100deg);
+        transform-origin: top;
+        opacity: 0;
+    }
+  }

@@ -4,6 +4,7 @@ const bloqueResultado = document.querySelector('.bloque');
 const noMensajeNotify = document.querySelector('.no-mensaje');
 const tieneAcentoNotify = document.querySelector('.tiene-acento');
 const textoCopiadoNotify = document.querySelector('.texto-copiado');
+const imagenBloque = document.querySelector('.imagen-bloque');
 
 var textoActual = "", textoNuevo = "";
 var vecesAlturaAñadida = 0, incrementoInput = 31, pixelAlturaInput = textoEntrada.clientHeight;
@@ -16,12 +17,19 @@ function encriptar(){
         if(window.innerWidth >= 992){
             document.querySelector('.btn-copiar').style.display = 'none';
             textoSalida.style.display = 'none';
+            imagenBloque.style.animation = 'aparecer-imagen 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both';
+            imagenBloque.style.display = 'flex';
         }
     } else if(cumpleCondiciones){
         mostrarNotificacion(tieneAcentoNotify);
     } else {
         if(window.innerWidth >= 992){
-            textoSalida.style.display = 'block';
+            document.querySelector('.btn-copiar').style.display = 'none';
+            imagenBloque.style.animation = 'desaparecer-bloque 0.3s cubic-bezier(0.600, -0.280, 0.735, 0.045) both';
+            setTimeout(()=>{
+                imagenBloque.style.display = 'none';
+                textoSalida.style.display = 'block';
+            },300);
         }
         textoSalida.textContent = '';
         bloqueResultado.style.display = "block";
@@ -45,9 +53,23 @@ function desencriptar(){
     textoNuevo = "";
     if(textoEntrada.value == "" || textoEntrada.value == null){
         mostrarNotificacion(noMensajeNotify);
+        if(window.innerWidth >= 992){
+            document.querySelector('.btn-copiar').style.display = 'none';
+            textoSalida.style.display = 'none';
+            imagenBloque.style.animation = 'aparecer-imagen 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both';
+            imagenBloque.style.display = 'flex';
+        }
     } else if(cumpleCondiciones){
         mostrarNotificacion(tieneAcentoNotify);
     } else {
+        if(window.innerWidth >= 992){
+            document.querySelector('.btn-copiar').style.display = 'none';
+            imagenBloque.style.animation = 'desaparecer-bloque 0.3s cubic-bezier(0.600, -0.280, 0.735, 0.045) both';
+            setTimeout(()=>{
+                imagenBloque.style.display = 'none';
+                textoSalida.style.display = 'block';
+            },300);
+        }
         textoSalida.textContent = '';
         bloqueResultado.style.display = "block";
         textoActual = textoEntrada.value;

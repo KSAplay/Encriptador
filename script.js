@@ -8,7 +8,7 @@ const imagenBloque = document.querySelector('.imagen-bloque');
 
 var textoActual = "", textoNuevo = "";
 var vecesAlturaAñadida = 0, incrementoInput = 31, pixelAlturaInput = textoEntrada.clientHeight;
-var cumpleCondiciones = false, temaOscuro = false, estaMostrandoNotify = false;
+var cumpleCondiciones = false, temaOscuro = false, mostrandoAlerta = false;
 
 function encriptar(){
     textoNuevo = "";
@@ -243,18 +243,18 @@ function animacionEscritura(texto) {
     }, 30);
   }
 
-function mostrarNotificacion(notify){
-    if(!estaMostrandoNotify){
-        estaMostrandoNotify = true;
-        notify.style.display = 'flex';
-        notify.style.animation = 'notificar-entrada 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both';
+function mostrarNotificacion(tipoAlerta){
+    if(!mostrandoAlerta){
+        mostrandoAlerta = true;
+        tipoAlerta.style.display = 'flex';
+        tipoAlerta.style.animation = 'notificar-entrada 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both';
         setTimeout(()=>{
-            notify.style.animation = 'notificar-salida 0.5s cubic-bezier(0.550, 0.055, 0.675, 0.190) both';
+            tipoAlerta.style.animation = 'notificar-salida 0.5s cubic-bezier(0.550, 0.055, 0.675, 0.190) both';
         }, 2000);
         setTimeout(()=>{
-            notify.style.animation = '';
-            notify.style.display = 'none';
-            estaMostrandoNotify = false;
+            tipoAlerta.style.animation = '';
+            tipoAlerta.style.display = 'none';
+            mostrandoAlerta = false;
         }, 2500);
     }
 }

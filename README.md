@@ -2,7 +2,7 @@
 
 ---
 
-Este es el primer Challenge del programa ONE - Oracle Next Education, donde se nos solicitó hacer un encriptador de texto, donde se podrá intercambiar mensajes secretos con otras personas que sepan el secreto de la encriptación utilizada.
+Este es el primer Challenge del programa ONE - Oracle Next Education, donde se nos solicitó hacer un encriptador de texto en el cual se podrá intercambiar mensajes secretos con otras personas que sepan el código de la encriptación utilizada.
 
 ---
 
